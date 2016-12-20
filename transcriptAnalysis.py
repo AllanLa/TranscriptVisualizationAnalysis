@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from threading import Thread
 
 #Speakers to ignore in the transcript
-IGNORE_SPEAKERS = ["MODERATOR", "PARTICIPANTS"]
+IGNORE_SPEAKERS = ["MODERATOR", "PARTICIPANTS", "MODERATORS", "QUESTION"]
 
 def main():
 # Inputting a file
@@ -39,7 +39,8 @@ def cleanDic(dic):
 	"""for each speaker in the global ignore_speakers, this function will remove
 	those speakers from the dictionary"""
 	for ignore in IGNORE_SPEAKERS:
-		del dic[ignore]
+		if ignore in dic:
+			del dic[ignore]
 
 def extractSpeakers(transcriptText):
 	"""Takes in a string of the entire debateText and returns a dictionary holding
