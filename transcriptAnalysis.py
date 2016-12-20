@@ -1,23 +1,28 @@
-''' Complete your program here. '''
+"""
+Allan La
+12/19/16
+Bucknell University
+Computer Science & Engineer Major
+Class of 2018
+"""
 import re #importing regular expression library
 import numpy as np
 import matplotlib.pyplot as plt
-from threading import Thread
 
 #Speakers to ignore in the transcript
 IGNORE_SPEAKERS = ["MODERATOR", "PARTICIPANTS", "MODERATORS", "QUESTION"]
 
+
 def main():
 # Inputting a file
 	while True:
-		#try:
-		fileName = raw_input("Type in file name in the format e.g. 'FileName.txt': ")
-		fileIn = open(fileName, 'rt')
-
-		break
-#	except  Exception:
-		print("File not found, make sure it is in same working directory.")
-		print("Press Ctrl + C to escape.\n")
+		try:
+			fileName = raw_input("Type in file name in the format e.g. 'FileName.txt': ")
+			fileIn = open(fileName, 'rt')
+			break
+		except Exception:
+			print("File not found, make sure it is in same working directory.")
+			print("Press Ctrl + C to escape.\n")
 	
 	# This will create a long string of the debate file
 	debateLines = fileIn.read()
@@ -124,8 +129,8 @@ def plotTotalWords(totalDic):
 	plt.xticks(y_pos, speakers)
 	plt.ylabel('Number of Words')
 	plt.title('Total Words Used')
+	plt.suptitle(FILENAME)
 	plt.figure()
-
 
 
 def plotUniqueWords(uniqueDic):
@@ -139,6 +144,7 @@ def plotUniqueWords(uniqueDic):
 	plt.xticks(y_pos, speakers)
 	plt.ylabel('Number of Unique Words')
 	plt.title('Unique Words Used')
+	plt.suptitle(FILENAME)
 	plt.show()
 
 main()
